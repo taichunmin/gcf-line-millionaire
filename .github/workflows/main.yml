@@ -21,12 +21,17 @@ jobs:
 
     - name: 設定 gcloud
       uses: GoogleCloudPlatform/github-actions@0.1.2
+      with:
+        project_id: ${{ secrets.GCP_PROJECT }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
 
     - name: 安裝相依性套件
       run: yarn
 
     - name: 建立正式站環境變數檔案
       run: echo $ENV_PROD > .env.prod
+      env:
+        ENV_PROD: ${{ secrets.ENV_PROD }}
 
     - name: 部署到 Google Cloud Functions
       run: yarn deploy
