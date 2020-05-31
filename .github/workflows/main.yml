@@ -1,9 +1,7 @@
-name: CI
+name: 部署到 Google Cloud Functions
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:
