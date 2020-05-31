@@ -14,6 +14,7 @@ exports.main = async (req, res) => {
     await Promise.all(_.map(events, event => lineHandler({ req, event, line })))
     res.status(200).send('OK')
   } catch (err) {
+    console.log('index err =', JSON.stringify(err))
     res.status(err.status || 500).send(err.message)
   }
 }

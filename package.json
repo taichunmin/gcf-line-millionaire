@@ -23,6 +23,6 @@
     "eslint-plugin-standard": "^4.0.1"
   },
   "scripts": {
-    "deploy": "gcloud functions deploy line-millionaire --region=us-central1 --allow-unauthenticated --entry-point=main --memory=128MB --runtime=nodejs10 --stage-bucket=$GCP_DEPLOY_STORAGE --timeout=60s --env-vars-file=.env.yaml --max-instances=1 --trigger-http"
+    "deploy": "gcloud functions deploy line-millionaire --region=us-central1 --allow-unauthenticated --entry-point=main --memory=128MB --runtime=nodejs10 --timeout=60s --env-vars-file=.env.yaml --max-instances=1 --trigger-http"
   }
 }

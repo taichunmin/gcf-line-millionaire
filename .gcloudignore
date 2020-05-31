@@ -102,3 +102,14 @@ dist
 
 # TernJS port file
 .tern-port
+
+# other files
+.editorconfig
+.env.yaml
+.eslintignore
+.eslintrc.js
+.git/
+.github/
+.gitignore
+LICENSE
+README.md

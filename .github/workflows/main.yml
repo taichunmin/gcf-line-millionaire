@@ -12,19 +12,11 @@ jobs:
     - name: Checkout 原始碼
       uses: actions/checkout@v2
 
-    - name: 設定 Node.js v12
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12'
-
     - name: 設定 gcloud
       uses: GoogleCloudPlatform/github-actions@master
       with:
         project_id: ${{ secrets.GCP_PROJECT }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
-
-    - name: 安裝相依性套件
-      run: yarn
 
     - name: 建立正式站環境變數檔案
       run: echo $ENV_PROD > .env.yaml
