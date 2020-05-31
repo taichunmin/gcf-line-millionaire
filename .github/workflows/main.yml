@@ -33,3 +33,5 @@ jobs:
 
     - name: 部署到 Google Cloud Functions
       run: yarn deploy
+      env:
+        GCP_DEPLOY_STORAGE: ${{ secrets.GCP_DEPLOY_STORAGE }}
