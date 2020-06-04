@@ -11,7 +11,7 @@
 * Storage 物件建立者
 * 檢視者
 
-## gcf `.env.yaml`
+## gcf `ENV_PROD=`
 
 ```yaml
 NODE_ENV: production
