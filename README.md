@@ -15,7 +15,7 @@
 
 ```yaml
 NODE_ENV: production
-GA_DEBUG: 1
+GA_DEBUG: '1'
 ```
 
 ## GitHub Secrets
