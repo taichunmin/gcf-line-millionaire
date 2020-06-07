@@ -1,5 +1,4 @@
 const _ = require('lodash')
-const errorToJson = require('../../lib/error-to-json')
 const GoogleAnalytics = require('../../lib/google-analytics')
 
 // 定義 Error.toJSON
@@ -29,7 +28,7 @@ module.exports = async ({ req, event, line }) => {
 
     await ga.flush() // 送出 GA 資料
   } catch (err) {
-    console.log('line/handler err =', errorToJson(err))
+    console.log('line/handler err =', JSON.stringify(err))
     await line.replyMessage(event.replyToken, { type: 'text', text: err.message })
   }
 }
