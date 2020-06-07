@@ -1,4 +1,5 @@
 const _ = require('lodash')
+const errorToJson = require('./lib/error-to-json')
 const Line = require('@line/bot-sdk').Client
 const lineHandler = require('./line/handler')
 
@@ -14,7 +15,7 @@ exports.main = async (req, res) => {
     await Promise.all(_.map(events, event => lineHandler({ req, event, line })))
     res.status(200).send('OK')
   } catch (err) {
-    console.log('index err =', JSON.stringify(err))
+    console.log('index err =', errorToJson(err))
     res.status(err.status || 500).send(err.message)
   }
 }
