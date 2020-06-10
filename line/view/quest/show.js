@@ -13,8 +13,6 @@ const renderOption = ({ quest, emoji, i }) => ({
   cornerRadius: '10px',
   layout: 'vertical',
   paddingAll: '10px',
-  paddingEnd: '20px',
-  paddingStart: '20px',
   type: 'box',
   action: {
     data: JSON.stringify(['questAnswer', quest.id, i]),
@@ -32,7 +30,6 @@ module.exports = quest => ({
   type: 'flex',
   altText: `第 ${quest.id} 題`,
   contents: {
-    size: 'giga',
     type: 'bubble',
     header: {
       layout: 'vertical',
@@ -48,6 +45,8 @@ module.exports = quest => ({
         },
         {
           backgroundColor: color.badge.warning.bg,
+          borderColor: color.badge.warning.border,
+          borderWidth: '2px',
           cornerRadius: '13px',
           height: '26px',
           layout: 'horizontal',
@@ -55,12 +54,12 @@ module.exports = quest => ({
           offsetTop: '12px',
           position: 'absolute',
           type: 'box',
-          width: '75px',
+          width: '80px',
           contents: [{
             align: 'center',
             color: color.badge.warning.text,
             gravity: 'center',
-            size: 'sm',
+            size: 'xs',
             text: `第 ${quest.id} 題`,
             type: 'text',
             weight: 'bold',

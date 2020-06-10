@@ -5,6 +5,13 @@ module.exports = ({ event }) => [{
   type: 'flex',
   contents: {
     type: 'bubble',
+    hero: {
+      aspectMode: 'cover',
+      aspectRatio: '16:9',
+      size: 'full',
+      type: 'image',
+      url: 'https://i.imgur.com/BkLfPfq.png',
+    },
     body: {
       backgroundColor: color.bg.black,
       layout: 'vertical',
@@ -23,7 +30,7 @@ module.exports = ({ event }) => [{
       type: 'box',
       contents: [
         {
-          color: color.btn.info,
+          color: color.btn.secondary,
           style: 'primary',
           type: 'button',
           action: {
@@ -33,7 +40,7 @@ module.exports = ({ event }) => [{
           },
         },
         {
-          color: color.btn.primary,
+          color: color.btn.success,
           style: 'primary',
           type: 'button',
           action: {

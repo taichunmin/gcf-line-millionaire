@@ -13,6 +13,14 @@ const handlers = {
   unfollow: require('./unfollow'),
 }
 
+const fnReplyMessage = ({ event, line }) => {
+  return async msg => {
+    if (_.get(event, 'replyed')) throw new Error('重複呼叫 event.replyMessage')
+    _.set(event, 'replyed', 1)
+    await line.replyMessage(event.replyToken, msg)
+  }
+}
+
 module.exports = async ({ req, event, line }) => {
   try {
     // 先把 event 記錄到 google cloud logging
@@ -21,6 +29,7 @@ module.exports = async ({ req, event, line }) => {
     // 如果是測試訊息就直接不處理
     if (_.get(event, 'source.userId') === 'Udeadbeefdeadbeefdeadbeefdeadbeef') return
 
+    event.replyMessage = fnReplyMessage({ event, line }) // replyMessage 輔助函式
     const ga = new GoogleAnalytics(event.source.userId) // GA 初始化
 
     const eventType = _.get(event, 'type')
@@ -29,6 +38,6 @@ module.exports = async ({ req, event, line }) => {
     await ga.flush() // 送出 GA 資料
   } catch (err) {
     console.log('line/handler err =', JSON.stringify(err))
-    await line.replyMessage(event.replyToken, { type: 'text', text: err.message })
+    await event.replyMessage({ type: 'text', text: err.message })
   }
 }
