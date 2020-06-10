@@ -11,17 +11,30 @@
 * Storage 物件建立者
 * 檢視者
 
-## gcf `ENV_PROD=`
-
-```yaml
-NODE_ENV: production
-GA_DEBUG: '1'
-```
-
 ## GitHub Secrets
 
 ```
 ENV_PROD=
 GCP_PROJECT=
 GCP_SA_KEY=
+```
+
+### gcf `ENV_PROD=`
+
+```yaml
+FIREBASE_CONFIG: ''
+FIREBASE_SA_KEY: ''
+GA_DEBUG: '1'
+GCLOUD_PROJECT: taichunmin
+NODE_ENV: production
+```
+
+#### gcf `FIREBASE_CONFIG`
+
+```js
+const FIREBASE_CONFIG = {
+  credential: require('serviceAccount.json'),
+  databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+}
+console.log(JSON.stringify(FIREBASE_CONFIG))
 ```

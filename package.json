@@ -27,7 +27,7 @@
   },
   "scripts": {
     "deploy": "gcloud functions deploy line-millionaire --region=us-central1 --allow-unauthenticated --entry-point=main --memory=128MB --runtime=nodejs10 --timeout=60s --env-vars-file=.env.yaml --max-instances=1 --trigger-http",
-    "dev": "pm2 start dev.js --name line-millionaire --watch --ignore-watch=\"node_modules\" --ignore-watch=\".git\" --restart-delay 1000 --time --no-daemon",
+    "dev": "pm2 start dev.js --name line-millionaire --watch --ignore-watch=\"node_modules\" --ignore-watch=\".git\" --restart-delay 1000 --no-daemon",
     "ngrok": "ngrok http 3000"
   }
 }
