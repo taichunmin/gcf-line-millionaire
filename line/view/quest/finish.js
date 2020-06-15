@@ -1,7 +1,7 @@
-const { color } = require('./common')
+const { color } = require('../common')
 
-module.exports = ({ event }) => ({
-  altText: '請按「開始答題」開始回答題目。',
+module.exports = () => ({
+  altText: '您已經回答完所有題目，請點選「答題狀態」來查看大家的回答狀況。',
   type: 'flex',
   contents: {
     type: 'bubble',
@@ -18,7 +18,7 @@ module.exports = ({ event }) => ({
       type: 'box',
       contents: [{
         color: color.text.white,
-        text: '這個是「在 LINE Chatbot 中串接 Google Analytics 的經驗分享」的範例程式。\n\n請按「開始答題」開始回答以下有關 LINE Message API 以及 chatbot.tw 相關的題目。',
+        text: '您已經回答完所有題目，請點選「答題狀態」來查看大家的回答狀況。',
         type: 'text',
         wrap: true,
       }],
@@ -44,9 +44,9 @@ module.exports = ({ event }) => ({
           style: 'primary',
           type: 'button',
           action: {
-            data: JSON.stringify(['questShow']),
-            label: '開始答題',
-            type: 'postback',
+            label: '答題狀態',
+            type: 'uri',
+            uri: 'https://taichunmin.idv.tw',
           },
         },
       ],

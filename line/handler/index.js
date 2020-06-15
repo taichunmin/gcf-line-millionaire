@@ -17,7 +17,12 @@ const fnReplyMessage = ({ event, line }) => {
   return async msg => {
     if (_.get(event, 'replyed')) throw new Error('重複呼叫 event.replyMessage')
     _.set(event, 'replyed', 1)
-    await line.replyMessage(event.replyToken, msg)
+    try {
+      await line.replyMessage(event.replyToken, msg)
+    } catch (err) {
+      err.data = msg
+      throw err
+    }
   }
 }
 
