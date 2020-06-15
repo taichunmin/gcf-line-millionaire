@@ -11,19 +11,28 @@ const EMOJIS = {
 const renderOption = ({ quest, emoji, i }) => ({
   backgroundColor: color.btn.primary,
   cornerRadius: '10px',
-  layout: 'vertical',
+  layout: 'horizontal',
   paddingAll: '10px',
+  spacing: 'sm',
   type: 'box',
   action: {
-    data: JSON.stringify(['questAnswer', quest.id, i]),
+    data: JSON.stringify(['questAnswer', quest.id, _.toInteger(i)]),
     type: 'postback',
   },
-  contents: [{
-    color: color.text.white,
-    text: `${emoji} ${_.get(quest, 'option' + i)}`,
-    type: 'text',
-    wrap: true,
-  }],
+  contents: [
+    {
+      color: color.text.white,
+      flex: 0,
+      text: emoji,
+      type: 'text',
+    },
+    {
+      color: color.text.white,
+      text: _.get(quest, 'option' + i),
+      type: 'text',
+      wrap: true,
+    },
+  ],
 })
 
 module.exports = quest => ({
